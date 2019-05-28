@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="text" v-model="text">
+    <button @click="tijiao">提交</button>
+    <ul>
+      <li v-for="(item,index) in arr" @click="remove(index)">{{item}}</li>
+    </ul>
   </div>
+  
+    
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      text:null
+      ,arr:[]
+      
+    }
+  },
+  
+  methods:{
+    tijiao:function(){
+      this.arr.push(this.text);
+      this.text = ''
+    },
+    remove:function(index){
+      this.arr.splice(index,1)
+
+    }
+
   }
+
+  
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
